@@ -1,0 +1,67 @@
+.breadcrumbs {
+	width: 100%;
+}
+.breadcrumbs ul {
+	list-style: none;
+	width: 100%;
+	padding: 0;
+}
+.breadcrumbs ul li {
+	display: inline-block;
+	padding-right: 15px;
+}
+.breadcrumbs ul li a,
+.breadcrumbs ul li a:visited,
+.breadcrumbs ul li a:link,
+.breadcrumbs ul li a:active,
+.breadcrumbs ul li a:hover {
+	text-transform: uppercase;
+	text-decoration: none;
+	padding-right: 15px;
+}
+.breadcrumbs ul li:after {
+	content: " > ";
+	font-size: medium;
+	color: purple;
+}
+.breadcrumbs ul li:last-child {
+	padding-right: 0;
+}
+.breadcrumbs ul li:last-child:after {
+	content: none;
+}
+
+.actionGroups {
+	padding-top: 50px;
+}
+
+.group1 {}
+.group2 {
+	padding: 40px 0;
+}
+.breakLine {
+	border-bottom: solid 1px gray;
+	width: 100%;
+	padding: 15px 0;
+}
+
+.buttonOutline {
+	background: none;
+	border: solid 2px red;
+	width: 100%;
+	padding: 5px 0;
+	text-transform: uppercase;
+}
+
+.titleItemsGroups {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
