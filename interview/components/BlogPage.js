@@ -1,12 +1,21 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
+import styles from '../styles/layoutStyles';
+import Button from './Button';
+import { Home } from '@material-ui/icons';
 
-import styles from '../styles/home.module.css';
+const useStyles = makeStyles(styles);
 
 export default function BlogPage() {
+	const classes = useStyles();
 	return (
-		<section className="container">
-			<div className={styles.main}>
-				Blog page content
-			</div>
-		</section>
+		<div className={classes.textCenter}>
+			Blog page content<br/>
+			
+			<Button color="primary" round>
+				<Home />
+				Back Home
+			</Button>
+		</div>
 	);
 }

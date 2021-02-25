@@ -1,12 +1,14 @@
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
+import styles from '../styles/layoutStyles';
 
-import styles from '../styles/home.module.css';
+const useStyles = makeStyles(styles);
 
 export default function HomePage() {
+	const classes = useStyles();
 	return (
-		<section className="container">
-			<div className={styles.main}>
-				Home page content
-			</div>
-		</section>
+		<div className={classes.textCenter}>
+			Home page content
+		</div>
 	);
 }

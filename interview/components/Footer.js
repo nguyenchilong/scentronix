@@ -1,30 +1,60 @@
-import FooterStyles from '../styles/footer.module.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { List, ListItem, makeStyles } from '@material-ui/core';
+import { Twitter, Facebook, LinkedIn, Favorite } from '@material-ui/icons';
+import styles from '../styles/footerStyles';
+const useStyles = makeStyles(styles);
 
-export default function Footer() {
+export default function Footer(props) {
+	const classes = useStyles();
+	const { whiteFont } = props;
+	const footerClasses = classNames({[classes.footer]: true, [classes.footerWhiteFont]: whiteFont});
+	const aClasses = classNames({[classes.a]: true, [classes.footerWhiteFont]: whiteFont});
 	return (
-		<footer className={`${FooterStyles.footer} ${FooterStyles.py4}`}>
-			<div className="container">
-				<div className="row align-items-center">
-					<div className="col-lg-4 text-lg-left">
-						Copyright © Your Website {new Date().getFullYear()}
-					</div>
-					<div className="col-lg-4 my-3 my-lg-0">
-						<a className="btn btn-dark btn-social mx-2" href="#!">
-							<i className="fab fa-twitter"></i>
-						</a>
-						<a className="btn btn-dark btn-social mx-2" href="#!">
-							<i className="fab fa-facebook-f"></i>
-						</a>
-						<a className="btn btn-dark btn-social mx-2" href="#!">
-							<i className="fab fa-linkedin-in"></i>
-						</a>
-					</div>
-					<div className="col-lg-4 text-lg-right">
-						<a className="mr-3" href="#!">Privacy Policy</a>
-						<a href="#!">Terms of Use</a>
-					</div>
+		<footer className={footerClasses}>
+			<div className={classes.container}>
+				<div className={classes.left}>
+					<List className={classes.list}>
+						<ListItem className={classes.inlineBlock}>
+							<a className={classes.block} href="#!">
+								Privacy Policy
+							</a>
+						</ListItem>
+						<ListItem className={classes.inlineBlock}>
+							<a className={classes.block} href="#!">
+								Terms of Use
+							</a>
+						</ListItem>
+						
+						
+						<ListItem className={classes.inlineBlock}>
+							<a className={classes.block} href="#!">
+								<Twitter className={classes.icon} />
+							</a>
+						</ListItem>
+						<ListItem className={classes.inlineBlock}>
+							<a className={classes.block} href="#!">
+								<Facebook className={classes.icon} />
+							</a>
+						</ListItem>
+						<ListItem className={classes.inlineBlock}>
+							<a className={classes.block} href="#!">
+								<LinkedIn className={classes.icon} />
+							</a>
+						</ListItem>
+					</List>
+				</div>
+				<div className={classes.right}>
+					&copy; {new Date().getFullYear()} , made with{" "}
+					<Favorite className={classes.icon} /> by{" "}
+					<a href="#!" className={aClasses}>Scentronix Team</a>{" "}for a better web.
 				</div>
 			</div>
 		</footer>
 	);
 }
+
+Footer.propTypes = {
+	whiteFont: PropTypes.bool
+};

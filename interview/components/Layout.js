@@ -1,15 +1,22 @@
 import useSWR from 'swr';
 import Head from 'next/head';
-import React, { useState } from 'react';
-import TopMenu from './TopMenu';
+import React from 'react';
+import Header from './Header';
+import Menu from './Menu';
 import Footer from './Footer';
-import styles from '../styles/home.module.css';
 import { isEmpty } from 'lodash';
+import classNames from 'classnames';
+import { makeStyles } from '@material-ui/core';
+import styles from '../styles/layoutStyles';
 
-export default function Layout({ children, home }) {
+const useStyles = makeStyles(styles);
+
+export default function Layout({ children, home, props }) {
 	const { data, error } = useSWR('/api/check', fetch);
 	let title = '';
 	let message = '';
+	const classes = useStyles();
+	const { ...rest } = props;
 	if (error) {
 		title = 'Error API Endpoint';
 		message = 'Not have any server online';
@@ -22,8 +29,22 @@ export default function Layout({ children, home }) {
 			<Head>
 				<title>{title}</title>
 			</Head>
-			<TopMenu />
-			<main className={styles.main}>{!isEmpty(message) ? message : children}</main>
+			
+			<Header
+				brand="NextJS Material UI"
+				leftLinks={<Menu />}
+				fixed
+				color="white"
+				changeColorOnScroll={{
+					height: 400,
+					color: "white"
+				}}
+				{...rest}
+			/>
+			
+			<main className={classNames(classes.main)}>
+				{!isEmpty(message) ? message : children}
+			</main>
 			<Footer />
 		</div>
 	);
